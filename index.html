@@ -14,13 +14,14 @@
             <li><a href="#menu">Menu</a></li>
             <li><a href="#cart">Cart</a></li>
             <li><a href="#profile">Profile</a></li>
+          
         </ul>
     </nav>
 
     <!-- Home Section -->
-    <section style="background-image: url(https://i.pinimg.com/736x/b0/e7/47/b0e747a8e32385349f1e10f0dbfdcabd.jpg);" id="home">
+    <section style="background-image: url('https://i.pinimg.com/736x/b0/e7/47/b0e747a8e32385349f1e10f0dbfdcabd.jpg');" id="home">
         <h1 style="color: aliceblue;">Welcome to the Online Food Ordering System</h1>
-        <button onclick="login()">Login</button>
+        <button onclick="window.location.href='login.html'">Login</button> <!-- Redirect to login page -->
     </section>
 
     <!-- Menu Section -->
@@ -28,106 +29,36 @@
         <h2>Menu</h2>
         <p id="food-count">Number of food items: <span id="food-item-count">20</span></p>
         <input type="text" id="search" placeholder="Search for food..." oninput="filterMenu()">
-        <div id="food-items" class="food-container">
-            <!-- Food Items with Images -->
-            <div class="food-item">
-                <img src="https://i.pinimg.com/736x/1e/a7/fc/1ea7fca510708ed25f97b2ca63809d32.jpg" alt="Pizza">
-                <p>Pizza Kes 1000</p>
-            </div>
-            <div class="food-item">
-                <img src="https://example.com/burger.jpg" alt="Burger">
-                <p>Burger</p>
-            </div>
-            <div class="food-item">
-                <img src="https://example.com/pasta.jpg" alt="Pasta">
-                <p>Pasta</p>
-            </div>
-            <div class="food-item">
-                <img src="https://example.com/sushi.jpg" alt="Sushi">
-                <p>Sushi</p>
-            </div>
-            <div class="food-item">
-                <img src="https://example.com/salad.jpg" alt="Salad">
-                <p>Salad</p>
-            </div>
-            <div class="food-item">
-                <img src="https://example.com/tacos.jpg" alt="Tacos">
-                <p>Tacos</p>
-            </div>
-            <div class="food-item">
-                <img src="https://example.com/steak.jpg" alt="Steak">
-                <p>Steak</p>
-            </div>
-            <div class="food-item">
-                <img src="https://example.com/icecream.jpg" alt="Ice Cream">
-                <p>Ice Cream</p>
-            </div>
-            <div class="food-item">
-                <img src="https://example.com/sandwich.jpg" alt="Sandwich">
-                <p>Sandwich</p>
-            </div>
-            <div class="food-item">
-                <img src="https://example.com/friedchicken.jpg" alt="Fried Chicken">
-                <p>Fried Chicken</p>
-            </div>
-            <div class="food-item">
-                <img src="https://example.com/dumplings.jpg" alt="Dumplings">
-                <p>Dumplings</p>
-            </div>
-            <div class="food-item">
-                <img src="https://example.com/curry.jpg" alt="Curry">
-                <p>Curry</p>
-            </div>
-            <div class="food-item">
-                <img src="https://example.com/noodles.jpg" alt="Noodles">
-                <p>Noodles</p>
-            </div>
-            <div class="food-item">
-                <img src="https://example.com/burrito.jpg" alt="Burrito">
-                <p>Burrito</p>
-            </div>
-            <div class="food-item">
-                <img src="https://example.com/fishandchips.jpg" alt="Fish and Chips">
-                <p>Fish and Chips</p>
-            </div>
-            <div class="food-item">
-                <img src="https://example.com/hotdog.jpg" alt="Hot Dog">
-                <p>Hot Dog</p>
-            </div>
-            <div class="food-item">
-                <img src="https://example.com/pancakes.jpg" alt="Pancakes">
-                <p>Pancakes</p>
-            </div>
-            <div class="food-item">
-                <img src="https://example.com/quiche.jpg" alt="Quiche">
-                <p>Quiche</p>
-            </div>
-            <div class="food-item">
-                <img src="https://example.com/brownie.jpg" alt="Brownie">
-                <p>Brownie</p>
-            </div>
-            <div class="food-item">
-                <img src="https://example.com/smoothie.jpg" alt="Smoothie">
-                <p>Smoothie</p>
-            </div>
-        </div>
+        <div id="food-items" class="food-container"></div>
     </section>
 
     <!-- Cart Section -->
     <section id="cart">
         <h2>Your Cart</h2>
-        <ul id="cart-items">
-            <!-- Cart items will appear here -->
-        </ul>
+        <ul id="cart-items"></ul>
         <button onclick="checkout()">Proceed to Checkout</button>
     </section>
 
     <!-- Profile Section -->
     <section id="profile">
         <h2>Your Profile</h2>
-        <p id="username">Username: User</p>
+        <p id="usernameDisplay">Username: <span id="username">Guest</span></p>
+        <button id="logoutButton" onclick="logout()">Logout</button> <!-- Logout button -->
     </section>
 
     <script src="script.js"></script>
+    <script>
+        // Update the profile section with the logged-in username
+        const username = localStorage.getItem('username') || 'Guest'; // Default to 'Guest' if no username
+        document.getElementById('username').innerText = username;
+
+        // Logout function
+        function logout() {
+            localStorage.removeItem('username'); // Remove username from localStorage
+            document.getElementById('username').innerText = 'Guest'; // Reset username display
+            alert("You have been logged out."); // Optional: notify the user
+            window.location.href = "login.html"; // Redirect to login page
+        }
+    </script>
 </body>
 </html>

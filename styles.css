@@ -1,5 +1,3 @@
-/* styles.css */
-
 /* General Body Styles */
 body {
     font-family: Arial, sans-serif;
@@ -92,14 +90,16 @@ button:hover {
     transition: background-color 0.3s;
 }
 
+/* Adjusted Food Item Image Styles */
 .food-item img {
-    max-width: 100%; /* Responsive image */
-    height: auto; /* Maintain aspect ratio */
+    width: 100%; /* Set width to fill container */
+    height: 150px; /* Fixed height for uniformity */
+    object-fit: cover; /* Cover to maintain aspect ratio */
     border-radius: 5px;
 }
 
 .food-item:hover {
-    background-color: #e0e0e0; /* Change background on hover */
+    background-color: #0fd88b; /* Change background on hover */
 }
 
 /* Cart Items Styles */
